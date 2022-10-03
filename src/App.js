@@ -24,6 +24,9 @@ function reducer(state, { type, payload }) {
       if (payload.digit === "0" && state.currentOperand === "0") {
         return state
       }
+      if (payload.digit === "." && state.currentOperand === "") {
+        return state
+      }
       if (payload.digit === "." && state.currentOperand.includes(".")) {
         return state
       }
@@ -132,7 +135,7 @@ function formatOperand(operand) {
 }
 
 function App() {
-  const [{ currentOperand, previousOperand, operation }, dispatch] = useReducer(reducer, {})
+  const [{ currentOperand = "0", previousOperand, operation }, dispatch] = useReducer(reducer, {})
 
   return (
     <div className="calculator-grid">
