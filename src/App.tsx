@@ -100,10 +100,10 @@ function reducer(state: any, { type, payload }: any) {
 }
 
 function evaluate({ currentOperand, previousOperand, operation }: any) {
-  const prev = parseFloat(previousOperand)
-  const current = parseFloat(currentOperand)
+  const prev: number = parseFloat(previousOperand)
+  const current: number = parseFloat(currentOperand)
   if (isNaN(prev) || isNaN(current)) return ""
-  let computation = ""
+  let computation: any = ""
   switch (operation) {
     case "+":
       computation = prev + current
