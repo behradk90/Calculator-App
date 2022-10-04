@@ -1,3 +1,4 @@
+import React from "react";
 import { useReducer } from "react";
 import DigitButton from "./DigitButton";
 import OperationButton from "./OperationButton";
@@ -11,7 +12,7 @@ export const ACTIONS = {
   EVALUATE: 'evaluate',
 }
 
-function reducer(state, { type, payload }) {
+function reducer(state: any, { type, payload }: any) {
   switch (type) {
     case ACTIONS.ADD_DIGIT:
       if (state.overwrite) {
@@ -98,7 +99,7 @@ function reducer(state, { type, payload }) {
   }
 }
 
-function evaluate({ currentOperand, previousOperand, operation }) {
+function evaluate({ currentOperand, previousOperand, operation }: any) {
   const prev = parseFloat(previousOperand)
   const current = parseFloat(currentOperand)
   if (isNaN(prev) || isNaN(current)) return ""
@@ -125,7 +126,7 @@ const INTEGER_FORMATTER = new Intl.NumberFormat("en-us", {
   maximumFractionDigits: 0,
 })
 
-function formatOperand(operand) {
+function formatOperand(operand: any) {
   if (operand == null) return
   const [integer, decimal] = operand.split('.')
   if (decimal == null) return INTEGER_FORMATTER.format(integer)
